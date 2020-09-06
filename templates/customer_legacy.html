@@ -1,0 +1,180 @@
+{% extends "base.html" %}
+{% block title %}ABC Inc{% endblock %}
+{% block content %}
+<h1>ABC Inc-Customer Support System (legacy)</h1>
+<p>Your one place to view all customer interaction</p>
+<br>
+<p>
+ <form action="/search" method="get">
+  Customer ID: <input type="text" name="ID" maxlength="200" width="60"> <input type="submit" value="Search">
+</form>
+</p>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+  background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: 2px solid black;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+  width :33%;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+</style>
+
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  white-space: nowrap;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+
+<div class="tab">
+  <button class="tablinks active" onclick="openCustinfo(event, 'Infor')" id="defaultOpen">Customer Information</button>
+  <button class="tablinks" onclick="openCustinfo(event, 'Activity')">Interaction History</button>
+  <button class="tablinks" onclick="openCustinfo(event, 'Offer')">Marketing offers</button>
+</div>
+
+<div id="Infor" class="tabcontent">
+  <h3>Customer Information</h3>
+  {% for customer in ci1 %}
+  <table>
+     <tr>
+	<td width = 10%>Customer ID: </td>
+	<td width = 20%><input type="text" value = {{customer["ID"]}}></input></td>
+	<td width = 10%>Gender: </td>
+	<td width = 20%><input type="text" value = {{customer["GENDER"]}}></input></td>
+	<td width = 10%>Marital Status: </td>
+	<td width = 20%><input type="text" value = {{customer["STATUS"]}}></input></td></tr>
+     <tr>
+	<td width = 10%>Number of Children: </td>
+	<td width = 20%><input type="text" value = {{customer["CHILDREN"]}}></input></td>
+	<td width = 10%>Estimated Income: </td>
+	<td width = 20%><input type="text" value = {{customer["ESTINCOME"]}}></input></td>
+	<td width = 10%>Is a Carowner: </td>
+	<td width = 20%><input type="text" value = {{customer["CAROWNER"]}}></input></td></tr>
+     <tr>
+	<td width = 10%>Age: </td>
+	<td width = 20%><input type="text" value = {{customer["AGE"]}}></input></td>
+	<td width = 10%>Long Distance Plan: </td>
+	<td width = 20%><input type="text" value = {{customer["LONGDISTANCE"]}}></input></td>
+	<td width = 10%>International Plan: </td>
+	<td width = 20%><input type="text" value = {{customer["INTERNATIONAL"]}}></input></td></tr>
+     <tr>
+	<td width = 10%>Local Plan: </td>
+	<td width = 20%><input type="text" value = {{customer["LOCAL"]}}></input></td>
+	<td width = 10%>Calls Dropped: </td>
+	<td width = 20%><input type="text" value = {{customer["DROPPED"]}}></input></td>
+	<td width = 10%>Payment Method: </td>
+	<td width = 20%><input type="text" value = {{customer["PAYMETHOD"]}}></input></td></tr>
+     <tr>
+	<td width = 10%>Local Bill Type: </td>
+	<td width = 20%><input type="text" value = {{customer["LOCALBILLTYPE"]}}></input></td>
+	<td width = 10%>Typical Usage: </td>
+	<td width = 20%><input type="text" value = {{customer["USAGE"]}}></input></td>
+	<td width = 10%>Current Status: </td>
+	<td width = 20%><input type="text" value = {{customer["STATUS"]}}></input></td></tr>
+  </table>
+  {% endfor %}
+ </div>
+
+<div id="Activity" class="tabcontent">
+  <h3>Interaction History</h3>
+  {% for customer in ci2 %}
+  <table>
+     <tr>
+	<td width = 5%>Customer ID: </td>
+	<td width = 5%><input type="text" value = {{customer["ID"]}}></input> </td>
+	<td width = 5%>Interaction Date: </td>
+	<td width = 5%><input type="text" value = {{customer["UPDT_DATE"]}}></input></td>
+	<td width = 10%>Comments: </td>
+	<td width = 10%><input size = "80" type="text" value = "{{customer["COMMENTS"]}}"></input></td>
+	<td width = 5%>Cust Service Rep ID: </td>
+	<td width = 5%><input type="text" value = {{customer["UPDT_USERID"]}}></input></td>
+	</tr>
+  </table>
+  {% endfor %}
+</div>
+
+<div id="Offer" class="tabcontent">
+  </table>
+  <h3>Please provide best marketing offer to customer based on recent complaints:</h3>
+  {% for customer in ci3 %}
+  <table>
+     <tr>
+	<td width = 10%>Current Offer: </td>
+	<td width = 40%><input size="100" type="text" value = "{{customer["OFFER"]}}"></input></td></tr>
+  </table>
+  {% endfor %}
+</div>
+
+<script>
+	window.onload = function () {
+                startTab();
+            };
+
+            function startTab() {
+                document.getElementById("defaultOpen").click();
+
+            }
+
+function openCustinfo(evt, customerName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(customerName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+{% endblock %}
