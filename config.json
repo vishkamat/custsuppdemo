@@ -1,0 +1,5 @@
+{
+"db2infor": "DATABASE=icp4ddb;HOSTNAME=9.30.251.97;PORT=50000;PROTOCOL=TCPIP;UID=db2inst1;PWD=Cowboys20-18;",
+"scoring_endpoint": "https://services-emea.skytap.com:16202/dmodel/v1/user7prjrel/pyscript/user7depv1/score",
+"token": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InVzZXI3IiwicGFja2FnZU5hbWUiOiJ1c2VyN3ByanJlbCIsInBhY2thZ2VSb3V0ZSI6InVzZXI3cHJqcmVsIiwiaWF0IjoxNTUwMDQzOTUwfQ.NLU5fuG7aMeWjTwI0YY_lUuMXPtoyCSxlwInQNC3P-HLhy2__Woq-LUiEfYibxdLNhlEKKxFV12SrHQoYtaZsN33vTjMxAqlZVAciBgv56fyk4TmvHul7iNWNjSATAf-8v2DqhpYpMs-gRoDTtVG2A1AjFnfk8hPJuKcxetgtiqJ31413J3Rugm_UuwNA0CYaps3yN2ozuhKhZMVBlkRs-X86MxfHMBpcbSLYDF4jFjwpI4TIMoiHpKdLiOVn0ektTP4cbsXtacZhMYIHI0AMH9brEHy8x38aVtf3dXwdoG1XJH5A3DBvxnQKdSLaT3GQi_Day1pgh5B0eBZyfbtsA" 
+}
